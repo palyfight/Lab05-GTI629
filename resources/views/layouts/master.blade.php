@@ -14,4 +14,3 @@
     </body>
     {!!Html::script('js/material.min.js')!!}
 </html>
-<!----https://getmdl.io/started/index.html--->
