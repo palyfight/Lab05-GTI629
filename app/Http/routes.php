@@ -13,11 +13,21 @@
 	Route::get('/', function() {
 		return view('welcome');
 	});
+
 	Route::auth();
+	Route::get('/home', 'HomeController@index');
 
 	Route::group(['middleware' => ['role:Admin']], function(){
+		Route::post('settings/save', 'SettingsController@save');
+	});
 
-
-		Route::get('/home', 'HomeController@index');
+	Route::group(['middleware' => ['role:sqare']], function(){
 
 	});
+
+	Route::group(['middleware' => ['role:circle']], function(){
+
+	});
+
+	
+
