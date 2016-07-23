@@ -15,7 +15,6 @@
 	});
 
 	Route::auth();
-	Route::get('/home', 'HomeController@index');
 
 	Route::get('/heimdall', function(){
 		
@@ -40,9 +39,10 @@
 	});
 
 	Route::group(['middleware' => ['role:square']], function(){
+		Route::get('/square', 'SquareController@index');
 
 	});
 
 	Route::group(['middleware' => ['role:circle']], function(){
-
+		Route::get('/circle', 'CircleController@index');
 	});
