@@ -18,7 +18,8 @@
 	Route::get('/home', 'HomeController@index');
 
 	Route::group(['middleware' => ['role:Admin']], function(){
-		Route::post('settings/save', 'SettingsController@save');
+		Route::get('/admin', 'AdminController@index');
+		Route::post('settings/save', 'AdminController@save');
 	});
 
 	Route::group(['middleware' => ['role:sqare']], function(){
