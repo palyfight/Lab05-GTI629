@@ -14,11 +14,8 @@ class CreateAppSettingsTable extends Migration
     {
         Schema::create('app_settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('nb_log_attempts');
-            $table->integer('auth_delais');
-            $table->boolean('block_auth_attempts');
-            $table->boolean('periodic_changement');
-            $table->string('regx_complexity');
+            $table->string('config_name')->index();
+            $table->string('config_value')->index();
             $table->rememberToken();
             $table->timestamps();
         });

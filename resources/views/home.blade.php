@@ -9,6 +9,14 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    <?php 
+                        $results = DB::select('select * from app_settings');
+                        foreach ($results as $config) {
+                            echo $config->config_name;
+                            echo $config->config_value;
+                            echo "<br />";
+                        }
+                    ?>
                 </div>
             </div>
         </div>

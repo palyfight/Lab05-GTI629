@@ -12,11 +12,33 @@ class SettingsSeeder extends Seeder
     public function run()
     {
         DB::table('app_settings')->insert([
-            'nb_log_attempts' => 3,
-            'auth_delais' => 60,
-            'block_auth_attempts' => 1,
-            'periodic_changement' => 1,
-            'regx_complexity' => "",
-        ]);
+            'config_name' => "password_length",
+            'config_value' => "8"
+            ]);
+
+        DB::table('app_settings')->insert([
+            'config_name' => "nb_log_attempts",
+            'config_value' => "3"
+            ]);
+
+        DB::table('app_settings')->insert([
+            'config_name' => "auth_delais",
+            'config_value' => "60"
+            ]);
+
+        DB::table('app_settings')->insert([
+            'config_name' => "block_auth_attempts",
+            'config_value' => "1"
+            ]);
+
+        DB::table('app_settings')->insert([
+            'config_name' => "periodic_changement",
+            'config_value' => "1"
+            ]);
+
+        DB::table('app_settings')->insert([
+            'config_name' => "regx_complexity",
+            'config_value' => ""
+            ]);
     }
 }
