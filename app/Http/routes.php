@@ -10,13 +10,21 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::group(['middleware' => 'web'], function(){
-	Route::auth();
 	Route::get('/', function() {
 		return view('welcome');
 	});
-	Route::get('/home', 'HomeController@index');
-});
 
-Route::post('settings/save', 'SettingsController@save');
+	Route::auth();
+	Route::get('/home', 'HomeController@index');
+
+	Route::group(['middleware' => ['role:Admin']], function(){
+		Route::post('settings/save', 'SettingsController@save');
+	});
+
+	Route::group(['middleware' => ['role:sqare']], function(){
+
+	});
+
+	Route::group(['middleware' => ['role:circle']], function(){
+
+	});
