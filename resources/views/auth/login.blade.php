@@ -1,26 +1,66 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
-  <div class="mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__title">
-      <h2 class="mdl-card__title-text">Login</h2>
-    </div>
-    {!! Form::open(array('url' => 'auth\login', 'method' => 'post')) !!}
-      {!! csrf_field() !!}
-      <div class="mdl-card__supporting-text"> 
-        {!! Form::token(); !!}
-        <div class="mdl-textfield mdl-js-textfield">
-          {!! Form::text('email', '', array('class' => 'mdl-textfield__input')); !!}
-          {!! Form::label('email', 'EMAIL / USERNAME', array('class' => 'mdl-textfield__label')); !!}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                        {{ csrf_field() }}
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password">
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-sign-in"></i> Login
+                                </button>
+
+                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="mdl-textfield mdl-js-textfield">
-          {!! Form::password('password', array('class' => 'mdl-textfield__input')); !!}
-          {!! Form::label('password', 'PASSWORD', array('class' => 'mdl-textfield__label')); !!}
-        </div>  
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-right" type="submit">Login</button>
-      </div>
-    {!! Form::close() !!}
-  </div>
+    </div>
+</div>
 @endsection
