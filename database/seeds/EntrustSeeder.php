@@ -28,5 +28,55 @@ class EntrustSeeder extends Seeder
             'display_name' => 'User Circle',
             'description' => 'User is allowed to see circle'
         ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '1',
+            'role_id' => '1'
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '2',
+            'role_id' => '3'
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '3',
+            'role_id' => '2'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'see-circle',
+            'display_name' => 'See Circle',
+            'description' => 'User can see circle'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'see-square',
+            'display_name' => 'See square',
+            'description' => 'User can see square'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'admin-power',
+            'display_name' => 'admin power',
+            'description' => 'User has admin power'
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '3',
+            'role_id' => '1'
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '2',
+            'role_id' => '2'
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '1',
+            'role_id' => '3'
+        ]);
+
+
     }
 }
