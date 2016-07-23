@@ -17,12 +17,29 @@
 	Route::auth();
 	Route::get('/home', 'HomeController@index');
 
+	Route::get('/heimdall', function(){
+		
+		if(Entrust::hasRole('Admin')) {
+			return Redirect::to('/admin');
+		}
+
+		if(Entrust::hasRole('square')){
+			return Redirect::to('/square');
+		}
+
+		if(Entrust::hasRole('circle')){
+			return Redirect::to('/circle');
+		}
+
+		return Redirect::to('/');
+	});
+
 	Route::group(['middleware' => ['role:Admin']], function(){
 		Route::get('/admin', 'AdminController@index');
 		Route::post('settings/save', 'AdminController@save');
 	});
 
-	Route::group(['middleware' => ['role:sqare']], function(){
+	Route::group(['middleware' => ['role:square']], function(){
 
 	});
 
