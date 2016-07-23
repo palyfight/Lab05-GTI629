@@ -19,4 +19,4 @@ Route::group(['middleware' => 'web'], function(){
 	Route::get('/home', 'HomeController@index');
 });
 
-Route::psot('settings/save', 'SettingsController@save');
+Route::post('settings/save', 'SettingsController@save');
