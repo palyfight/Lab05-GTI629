@@ -73,6 +73,6 @@ class AuthController extends Controller
 
     protected function postLogin()
     {
-        return view('welcome');
+        return ('hello world');
     }
 }

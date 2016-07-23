@@ -5,7 +5,7 @@
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">Login</h2>
     </div>
-    {!! Form::open(array('url' => 'Auth\login', 'method' => 'post')) !!}
+    {!! Form::open(array('url' => 'auth\login', 'method' => 'post')) !!}
       {!! csrf_field() !!}
       <div class="mdl-card__supporting-text"> 
         {!! Form::token(); !!}
