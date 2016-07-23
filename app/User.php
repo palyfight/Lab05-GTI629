@@ -5,10 +5,13 @@ namespace App;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Model implements AuthenticatableContract
 {
     use Authenticatable;
+    use EntrustUserTrait;
+
 
     /**
      * The database table used by the model.

@@ -158,6 +158,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Zizaco\Entrust\EntrustServiceProvider::class,
+
         'Collective\Html\HtmlServiceProvider',
 
     ],
@@ -207,6 +209,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 
