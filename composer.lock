@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8ef096b613edcabb9a6dee698e59ba59",
-    "content-hash": "5a8bae72497b10bf7b38d742c56bb829",
+    "hash": "af5b1c791805c285f4ace22b80789d9e",
+    "content-hash": "bce9b41cdad9013a58c17fa745412ade",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -650,6 +650,54 @@
                 "psr-3"
             ],
             "time": "2016-07-02 14:02:10"
+        },
+        {
+            "name": "mpociot/reauthenticate",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mpociot/reauthenticate.git",
+                "reference": "6c14d0dbd26266f1b51b2e207e77271404b7e843"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mpociot/reauthenticate/zipball/6c14d0dbd26266f1b51b2e207e77271404b7e843",
+                "reference": "6c14d0dbd26266f1b51b2e207e77271404b7e843",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "orchestra/testbench": "^3.0",
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mpociot\\Reauthenticate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcel Pociot",
+                    "email": "m.pociot@gmail.com"
+                }
+            ],
+            "description": "Reauthenticate users by letting them re-enter their passwords for specific parts of your app.",
+            "keywords": [
+                "Authentication",
+                "password prompt",
+                "reauthentication",
+                "security"
+            ],
+            "time": "2016-07-12 05:58:29"
         },
         {
             "name": "mtdowling/cron-expression",
