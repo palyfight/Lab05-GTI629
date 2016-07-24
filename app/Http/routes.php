@@ -42,18 +42,18 @@
 		Route::post('/admin/save', 'AdminController@save');
 		Route::get('/admin/createuser', 'AdminController@createuser');
 		Route::post('/admin/saveuser', 'AdminController@saveuser');
-		Route::get('auth/reauthenticate', 'Auth\AuthController@getReauthenticate');
-		Route::post('auth/reauthenticate', 'Auth\AuthController@postReauthenticate');
 	});
 
 	Route::group(['middleware' => ['role:square|Admin']], function(){
 		Route::get('/square', 'SquareController@index');
-		Route::get('auth/reauthenticate', 'Auth\AuthController@getReauthenticate');
-		Route::post('auth/reauthenticate', 'Auth\AuthController@postReauthenticate');
 	});
 
 	Route::group(['middleware' => ['role:circle|Admin']], function(){
 		Route::get('/circle', 'CircleController@index');
-		Route::get('auth/reauthenticate', 'Auth\AuthController@getReauthenticate');
-		Route::post('auth/reauthenticate', 'Auth\AuthController@postReauthenticate');
+	});
+
+	Route::group(['middleware' => ['role:square|circle|Admin']], function(){
+		Route::get('/changepassword', 'PasswordController@index');
+		Route::post('/changepassword/newpassword', 'PasswordController@newpassword');
+		Route::post('/changepassword/setpassword', 'PasswordController@setpassword');
 	});

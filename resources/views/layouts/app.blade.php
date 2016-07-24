@@ -52,6 +52,12 @@
                     </ul>
                 @endrole
 
+                @if (Auth::check())
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/changepassword') }}">Change password</a></li>
+                    </ul>
+                @endif
+
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())

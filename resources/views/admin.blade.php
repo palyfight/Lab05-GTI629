@@ -11,6 +11,11 @@
                     <?php 
                         $results = DB::select('select * from app_settings');
                     ?>
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/save') }}">
                         {{ csrf_field() }}
