@@ -63,6 +63,12 @@ class RateLimiter
         return (int) $this->cache->increment($key);
     }
 
+    public function hitMax($key)
+    {
+        $this->cache->add($key.':maxAttempts', 1);
+        return (int) $this->cache->increment($key);
+    }
+
     /**
      * Get the number of attempts for the given key.
      *

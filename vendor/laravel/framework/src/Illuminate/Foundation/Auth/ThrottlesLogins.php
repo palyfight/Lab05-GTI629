@@ -17,10 +17,15 @@ trait ThrottlesLogins
      */
     protected function hasTooManyLoginAttempts(Request $request)
     {
-        return app(RateLimiter::class)->tooManyAttempts(
+        if( app(RateLimiter::class)->tooManyAttempts(
             $this->getThrottleKey($request),
             $this->maxLoginAttempts(), $this->lockoutTime() / 60
-        );
+        ))
+        {
+            app(RateLimiter::class)->hitMax($this->getThrottleKey($request));
+            return true;
+        }
+        return false;
     }
 
     /**
