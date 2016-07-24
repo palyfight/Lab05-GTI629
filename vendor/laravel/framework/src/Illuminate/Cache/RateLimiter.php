@@ -49,6 +49,18 @@ class RateLimiter
         return false;
     }
 
+    public function tooManyMaxAttemps($key)
+    {
+        $maxTries = (int) $this->cache->get($key.':maxAttempts', 0);
+        if( $maxTries == 2)
+        {
+            $this->cache->add($key.':maxAttempts'.':lockout', time() + (525600 * 60), 525600);
+            $this->resetAttempts($key.':maxAttempts');
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Increment the counter for a given key for a given decay time.
      *
@@ -65,7 +77,7 @@ class RateLimiter
 
     public function hitMax($key)
     {
-        $this->cache->add($key.':maxAttempts', 1);
+        $this->cache->add($key.':maxAttempts', 1, 1);
         return (int) $this->cache->increment($key);
     }
 
@@ -117,6 +129,13 @@ class RateLimiter
 
         $this->cache->forget($key.':lockout');
     }
+
+    public function clearMax($key)
+    {
+        $this->resetAttempts($key.':maxAttempts');
+        $this->cache->forget($key.':maxAttempts'.':lockout');
+    }
+
 
     /**
      * Get the number of seconds until the "key" is accessible again.

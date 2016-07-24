@@ -28,6 +28,11 @@ trait ThrottlesLogins
         return false;
     }
 
+    protected function hasTooManyMaxAttemps(Request $request)
+    {
+        return (app(RateLimiter::class)->tooManyMaxAttemps($this->getThrottleKey($request)));
+    }
+
     /**
      * Increment the login attempts for the user.
      *
@@ -105,6 +110,13 @@ trait ThrottlesLogins
      * @return void
      */
     protected function clearLoginAttempts(Request $request)
+    {
+        app(RateLimiter::class)->clear(
+            $this->getThrottleKey($request)
+        );
+    }
+
+    protected function clearMaxAttempts(Request $request)
     {
         app(RateLimiter::class)->clear(
             $this->getThrottleKey($request)

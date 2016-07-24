@@ -116,6 +116,7 @@ trait AuthenticatesUsers
         LoggerController::log('succeed', $request['email']);
         if ($throttles) {
             $this->clearLoginAttempts($request);
+            $this->clearMaxAttempts($request);
         }
 
         if (method_exists($this, 'authenticated')) {
