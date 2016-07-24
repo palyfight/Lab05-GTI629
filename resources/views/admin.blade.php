@@ -12,7 +12,7 @@
                         $results = DB::select('select * from app_settings');
                     ?>
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/settings/save') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/save') }}">
                         {{ csrf_field() }}
 
                         @foreach ($results as $config)
