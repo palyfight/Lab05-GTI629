@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fc65f13461e418e345097dc818d5b260",
-    "content-hash": "542828fe91453ca512b1672b1447f210",
+    "hash": "8ef096b613edcabb9a6dee698e59ba59",
+    "content-hash": "5a8bae72497b10bf7b38d742c56bb829",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1003,6 +1003,57 @@
                 "mailer"
             ],
             "time": "2016-07-08 11:51:25"
+        },
+        {
+            "name": "swiggles/memcache",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiggles/laravel-memcache.git",
+                "reference": "6d660d4bdbee94a20835ad8ac84138a8588f7e7b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiggles/laravel-memcache/zipball/6d660d4bdbee94a20835ad8ac84138a8588f7e7b",
+                "reference": "6d660d4bdbee94a20835ad8ac84138a8588f7e7b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.2.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/cache": "~5.0",
+                "illuminate/session": "~5.0",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Swiggles\\Memcache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sam Wiggins",
+                    "homepage": "https://github.com/swiggles"
+                }
+            ],
+            "description": "Memcache driver for Laravel 5",
+            "homepage": "https://github.com/swiggles/laravel-memcache",
+            "keywords": [
+                "cache",
+                "caching",
+                "laravel",
+                "laravel 5",
+                "memcache"
+            ],
+            "time": "2016-02-03 17:58:00"
         },
         {
             "name": "symfony/console",

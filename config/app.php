@@ -160,6 +160,7 @@ return [
 
         Zizaco\Entrust\EntrustServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
+        'Swiggles\Memcache\MemcacheServiceProvider',
 
     ],
 

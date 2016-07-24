@@ -26,6 +26,7 @@ vendor/dnoegel
 vendor/composer
 vendor/classpreloader
 vendor/bin
+vendor/swiggles
 /node_modules
 /public/storage
 Homestead.yaml
