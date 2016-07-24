@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             'firstname' => "David",
             'lastname' => "Delva",
             'email' => 'dd@gmail.com',
-            'password' => bcrypt('random'),
+            'password' => bcrypt('Etsmt!c4'),
             'role' => "Admin",
             'locked' => 0 
         ]);
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             'firstname' => "Bob",
             'lastname' => "Gratton",
             'email' => 'bg@gmail.com',
-            'password' => bcrypt('random'),
+            'password' => bcrypt('Etsmt!c4'),
             'role' => "prepCercle",
             'locked' => 0 
         ]);
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'firstname' => "Pernal Karl",
             'lastname' => "Subban",
             'email' => '76@gmail.com',
-            'password' => bcrypt('random'),
+            'password' => bcrypt('Etsmt!c4'),
             'role' => "prepCarre",
             'locked' => 0 
         ]);
