@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
+use App\Http\Controllers\LoggerController;
+
 
 trait ResetsPasswords
 {
@@ -233,6 +235,7 @@ trait ResetsPasswords
 
         switch ($response) {
             case Password::PASSWORD_RESET:
+                LoggerController::log('changed', $request['email']);
                 return $this->getResetSuccessResponse($response);
             default:
                 return $this->getResetFailureResponse($request, $response);
