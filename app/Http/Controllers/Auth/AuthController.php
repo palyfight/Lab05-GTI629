@@ -37,6 +37,16 @@ class AuthController extends Controller
      */
     public function __construct()
     {
+        $attemps = intval(\DB::table('app_settings')->where('config_name', 'nb_log_attempts')->first()->config_value);
+        $time = intval(\DB::table('app_settings')->where('config_name', 'auth_delais')->first()->config_value);
+        if($attemps > 0 && $time > 0){
+            $this->maxLoginAttempts = $attemps;
+            $this->lockoutTime = $time;
+        }
+        else {
+            $this->maxLoginAttempts = 3;
+            $this->lockoutTime = 120;
+        }
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
