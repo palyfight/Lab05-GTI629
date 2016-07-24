@@ -93,8 +93,14 @@ trait AuthenticatesUsers
      */
     protected function validateLogin(Request $request)
     {
+        $regex = \DB::table('app_settings')->where('config_name', 'regx_complexity')->first();
         $this->validate($request, [
-            $this->loginUsername() => 'required', 'password' => 'required',
+            $this->loginUsername() => 'required', 'password' => [
+                'required',
+                'min:8',
+                'max:20',
+                'regex:/' . $regex->config_value .'/',
+            ]
         ]);
     }
 
