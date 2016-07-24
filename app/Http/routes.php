@@ -10,9 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
 	Route::get('/', function() {
 		return view('welcome');
 	});
+
+	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+	Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 	Route::auth();
 
@@ -38,11 +42,11 @@
 		Route::post('/admin/save', 'AdminController@save');
 	});
 
-	Route::group(['middleware' => ['role:square']], function(){
+	Route::group(['middleware' => ['role:square|Admin']], function(){
 		Route::get('/square', 'SquareController@index');
 
 	});
 
-	Route::group(['middleware' => ['role:circle']], function(){
+	Route::group(['middleware' => ['role:circle|Admin']], function(){
 		Route::get('/circle', 'CircleController@index');
 	});

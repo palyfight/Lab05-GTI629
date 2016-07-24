@@ -38,5 +38,14 @@ class DatabaseSeeder extends Seeder
             'role' => "prepCarre",
             'locked' => 0 
         ]);
+
+        DB::table('users')->insert([
+            'firstname' => "pocko",
+            'lastname' => "face",
+            'email' => 'pockoface@gmail.com',
+            'password' => bcrypt('random'),
+            'role' => "Admin",
+            'locked' => 0 
+        ]);
     }
 }
