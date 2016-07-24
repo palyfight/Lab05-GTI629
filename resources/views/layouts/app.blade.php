@@ -48,7 +48,7 @@
 
                 @role('Admin')
                     <ul class="nav navbar-nav">
-                        {{ HTML::linkAction('Auth\AuthController@showRegistrationFor', 'Create user') }}
+                        {{ Html::linkAction('Auth\AuthController@showRegistrationForm', 'Create user') }}
                     </ul>
                 @endrole
 

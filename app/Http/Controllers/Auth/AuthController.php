@@ -61,12 +61,12 @@ class AuthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return void
      */
-    protected function validateLogin(Request $request)
+    /*protected function validateLogin(Request $request)
     {
         $this->validate($request, [
             $this->loginUsername() => 'required', 'password' => 'required',
         ]);
-    }
+    }*/
 
     /**
      * Create a new user instance after a valid registration.
