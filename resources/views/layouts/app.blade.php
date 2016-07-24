@@ -45,6 +45,13 @@
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
+
+                @role('Admin')
+                    <ul class="nav navbar-nav">
+                        {{ Html::linkAction('Auth\AuthController@showRegistrationForm', 'Create user') }}
+                    </ul>
+                @endrole
+
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
