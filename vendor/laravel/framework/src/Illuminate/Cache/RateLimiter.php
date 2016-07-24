@@ -52,9 +52,9 @@ class RateLimiter
     public function tooManyMaxAttemps($key)
     {
         $maxTries = (int) $this->cache->get($key.':maxAttempts', 0);
-        if( $maxTries == 2)
+        
+        if( ($maxTries == 3))
         {
-            $this->cache->add($key.':maxAttempts'.':lockout', time() + (525600 * 60), 525600);
             $this->resetAttempts($key.':maxAttempts');
             return true;
         }
@@ -72,13 +72,15 @@ class RateLimiter
     {
         $this->cache->add($key, 1, $decayMinutes);
 
+
         return (int) $this->cache->increment($key);
     }
 
     public function hitMax($key)
     {
-        $this->cache->add($key.':maxAttempts', 1, 1);
-        return (int) $this->cache->increment($key);
+        $this->cache->add($key.':maxAttempts', 1, 5256);
+       
+        return (int) $this->cache->increment($key.':maxAttempts');
     }
 
     /**
@@ -132,7 +134,6 @@ class RateLimiter
 
     public function clearMax($key)
     {
-        $this->resetAttempts($key.':maxAttempts');
         $this->cache->forget($key.':maxAttempts'.':lockout');
     }
 

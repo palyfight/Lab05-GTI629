@@ -22,7 +22,10 @@ trait ThrottlesLogins
             $this->maxLoginAttempts(), $this->lockoutTime() / 60
         ))
         {
-            app(RateLimiter::class)->hitMax($this->getThrottleKey($request));
+            if($this->lockoutTime() == 60)
+            {
+                app(RateLimiter::class)->hitMax($this->getThrottleKey($request));    
+            }
             return true;
         }
         return false;
