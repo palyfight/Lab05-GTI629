@@ -44,7 +44,7 @@ class PasswordController extends Controller {
 				$password = bcrypt($request->input('password'));
 		        $user->password = $password;
 		        $user->save();
-		        return redirect('/admin')->with('status', 'Password Changed');
+		        return redirect('/heimdall')->with('status', 'Password Changed');
 			} else { 
 			    return redirect('changepassword')->with('status', 'No valid password was sent');
 			}
