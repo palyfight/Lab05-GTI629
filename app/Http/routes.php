@@ -40,6 +40,8 @@
 	Route::group(['middleware' => ['role:Admin']], function(){
 		Route::get('/admin', 'AdminController@index');
 		Route::post('/admin/save', 'AdminController@save');
+		Route::get('/admin/createuser', 'AdminController@createuser');
+		Route::post('/admin/saveuser', 'AdminController@saveuser');
 	});
 
 	Route::group(['middleware' => ['role:square|Admin']], function(){

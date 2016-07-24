@@ -48,7 +48,7 @@
 
                 @role('Admin')
                     <ul class="nav navbar-nav">
-                        {{ Html::linkAction('Auth\AuthController@showRegistrationForm', 'Create user') }}
+                        <li><a href="{{ url('/admin/createuser') }}">Create user</a></li>
                     </ul>
                 @endrole
 

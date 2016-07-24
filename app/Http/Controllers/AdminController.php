@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\User;
 
 class AdminController extends Controller {
 
@@ -34,4 +35,42 @@ class AdminController extends Controller {
         return view('admin');
     }
 
+    public function createuser()
+    {
+        return view('createuser');
+    }
+
+    public function saveuser(Request $request)
+    {
+    	$name = explode(",", $request->input('name'));
+        $user = User::create([
+            'firstname' => $name[0],
+            'lastname' => $name[1],
+            'email' =>  $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'role' => $this->getRole($request->input('role')),
+        ]);
+
+        $user->attachRole($this->getRoleId($request->input('role')));
+
+        return view('admin');
+    }
+
+    private function getRole($role_num){
+    	if(strcmp($role_num, "0"))
+    		return "prepCarre";
+    	else if(strcmp($role_num, "1"))
+    		return "prepCercle";
+    	else if(strcmp($role_num, "2"))
+    		return "Admin";
+    }
+
+    private function getRoleId($role_num){
+    	if(strcmp($role_num, "0"))
+    		return 2;
+    	else if(strcmp($role_num, "1"))
+    		return 3;
+    	else if(strcmp($role_num, "2"))
+    		return 1;
+    }
 }
