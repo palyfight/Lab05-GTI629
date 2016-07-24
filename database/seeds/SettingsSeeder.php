@@ -38,7 +38,7 @@ class SettingsSeeder extends Seeder
 
         DB::table('app_settings')->insert([
             'config_name' => "regx_complexity",
-            'config_value' => "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
+            'config_value' => "^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[$@$!%?&])[A-Za-z\d$@$!%?&]{8,}"
             ]);
     }
 }
